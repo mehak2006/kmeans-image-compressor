@@ -16,7 +16,7 @@ export default function App() {
 
     setLoading(true);
 
-    
+    setCentroids([]);
 
     const formData = new FormData();
     formData.append("file", file);
@@ -112,7 +112,7 @@ export default function App() {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "6px" }}>
               {centroids.map((c, i) => (
                 <div
-                  key={i}
+                  key={`${i}-${k}`}
                   title={`RGB(${Math.round(c[2])}, ${Math.round(c[1])}, ${Math.round(c[0])})`}
                   style={{
                     width: "32px",
