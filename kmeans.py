@@ -73,7 +73,7 @@ def sample_pixels(X, sample_size):
     indices = np.random.choice(X.shape[0], sample_size, replace=False)
     return X[indices]
 
-def assign_full_batched(X, centroids, batch_size=100000):
+def assign_full_batched(X, centroids, batch_size=20000):
     N = X.shape[0]
     assignments = np.empty(N, dtype=np.int32)
 
@@ -96,7 +96,7 @@ def compress_image_kmeans(original_image, K = 16):
     X_full = original_image.reshape(-1, 3).astype(np.float32)
 
    
-    sample_size = min(50000, X_full.shape[0])# try 50k–200k depending on RAM
+    sample_size = min(5000, X_full.shape[0])# try 50k–200k depending on RAM
     X_sample = sample_pixels(X_full, sample_size)
 
    
