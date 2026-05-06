@@ -38,17 +38,26 @@ async def compress_image(file: UploadFile = File(...), k: int = 16):
 
     np_arr = np.frombuffer(contents, np.uint8)
     image = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+    del contents, np_arr   
+    import gc; gc.collect()
     
     if image is None:
         raise HTTPException(status_code=400, detail="Invalid image file")
-    MAX_DIM = 1200
+    
+
+    
+    MAX_DIM = 600          
+    MAX_PIXELS = 300_000   
 
     h, w = image.shape[:2]
+    scale = min(MAX_DIM / max(h, w), 1.0)
+    new_w, new_h = int(w * scale), int(h * scale)
 
-    scale = min(MAX_DIM / max(h, w), 1)
 
-    new_w = int(w * scale)
-    new_h = int(h * scale)
+    if new_w * new_h > MAX_PIXELS:
+        extra = (MAX_PIXELS / (new_w * new_h)) ** 0.5
+        new_w = int(new_w * extra)
+        new_h = int(new_h * extra)
 
     image = cv2.resize(image, (new_w, new_h))
 

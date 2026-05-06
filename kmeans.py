@@ -25,7 +25,7 @@ def update_centroids(image, K, assignments):
             new_centroids[k] = image[np.random.randint(0, image.shape[0])]
     return new_centroids
 
-def k_means(K, image, tol=0.5, max_iters=30):
+def k_means(K, image, tol=0.5, max_iters=20):
     
     centroids = init_centroids(K, image)
     for _ in range(max_iters):
@@ -37,7 +37,7 @@ def k_means(K, image, tol=0.5, max_iters=30):
             break
     return centroids, assignments
 
-def assign_full_batched(X, centroids, batch_size=10000):
+def assign_full_batched(X, centroids, batch_size=5000):
     N = X.shape[0]
     assignments = np.empty(N, dtype=np.int32)
     for i in range(0, N, batch_size):
@@ -54,7 +54,7 @@ def compress_image_kmeans(original_image, K=16):
 
     X_full = original_image.reshape(-1, 3).astype(np.float32)
 
-    sample_size = min(3000, X_full.shape[0])
+    sample_size = min(2000, X_full.shape[0])
     indices = np.random.choice(X_full.shape[0], sample_size, replace=False)
     X_sample = X_full[indices]
 
