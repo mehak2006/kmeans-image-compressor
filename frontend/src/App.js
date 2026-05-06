@@ -28,10 +28,10 @@ export default function App() {
     });
 
     const data = await response.json();
+    console.log("received centroids:", data.centroids.length);
     const imageUrl = `data:image/jpeg;base64,${data.image}`;
     setCentroids(data.centroids);
-    setOutput(imageUrl);
-
+    console.log("state centroids:", centroids.length);
     setOutput(imageUrl);
     setLoading(false);
   };
