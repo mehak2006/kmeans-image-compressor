@@ -103,12 +103,7 @@ export default function App() {
           {loading ? "Processing..." : "Compress"}
         </button>
 
-        {stats && (
-          <div style={{ marginTop: "24px", fontSize: "13px", lineHeight: "2" }}>
-            <p>Compression Time: {stats.compressionTime} sec</p>
-            <p>K value: {stats.kValue}</p>
-          </div>
-        )}
+        
         {centroids.length > 0 && (
           <div style={{ marginTop: "24px" }}>
             <p style={{ fontSize: "12px", marginBottom: "10px" }}>
