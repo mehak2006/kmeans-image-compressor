@@ -131,7 +131,13 @@ npm start
 ```
 
 ---
+# Note
 
+The backend is deployed on Render's free tier, which automatically sleeps after inactivity.  
+Because of this, the **first upload/request may take around 30–60 seconds** while the backend wakes up. Subsequent requests are much faster.
+
+---
+```
 # References
 
 - Andrew Ng Machine Learning Specialization (Coursera)
