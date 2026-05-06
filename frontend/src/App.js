@@ -20,7 +20,7 @@ export default function App() {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("k", k);
+    formData.append("k", parseInt(k));
 
     const response = await fetch("https://kmeans-image-compressor-backend.onrender.com/compress",  {
       method: "POST",
