@@ -28,7 +28,7 @@ app.add_middleware(
 async def root():
     return {"message":"Hello World"}
 
-@app.post('/compress')
+
 
 @app.post('/compress')
 async def compress_image(file: UploadFile = File(...), k: int = 16):
