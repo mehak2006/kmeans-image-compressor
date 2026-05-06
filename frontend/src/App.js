@@ -6,7 +6,6 @@ export default function App() {
   const [k, setK] = useState(16);
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [stats, setStats] = useState(null);
   const [centroids, setCentroids] = useState([]);
 
   const handleCompress = async () => {
@@ -17,7 +16,7 @@ export default function App() {
 
     setLoading(true);
 
-    const startTime = performance.now();
+    
 
     const formData = new FormData();
     formData.append("file", file);
